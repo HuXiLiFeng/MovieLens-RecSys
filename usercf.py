@@ -171,7 +171,7 @@ class UserBasedCF():
 
 
 if __name__ == '__main__':
-    ratingfile = 'ml-1m/ratings.dat'
+    ratingfile = 'ratings.dat'
     usercf = UserBasedCF()
     usercf.generate_dataset(ratingfile)
     usercf.calc_user_sim()
