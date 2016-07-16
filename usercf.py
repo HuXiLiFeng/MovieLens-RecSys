@@ -32,6 +32,7 @@ class UserBasedCF():
     def loadfile(filename):
         ''' load a file, return a generator. '''
         fp = open(filename, 'r')
+        #enumerate参数为可遍历的变量，如 字符串，列表等； 返回值为enumerate类。在同时需要index和value值的时候可以使用 enumerate。
         for i,line in enumerate(fp):
             yield line.strip('\r\n')
             if i%100000 == 0:
@@ -103,6 +104,7 @@ class UserBasedCF():
         simfactor_count = 0
         PRINT_STEP = 2000000
         for u,related_users in usersim_mat.iteritems():
+            #count是两位用户的共同看过的电影的数量
             for v,count in related_users.iteritems():
                 usersim_mat[u][v] = count / math.sqrt(
                         len(self.trainset[u]) * len(self.trainset[v]))
@@ -150,7 +152,7 @@ class UserBasedCF():
 
         for i, user in enumerate(self.trainset):
             if i % 500 == 0:
-                print >> sys.stderr, 'recommended for $d users' % i
+                print >> sys.stderr, 'recommended for %s users' % i
             test_movies = self.testset.get(user, {})
             rec_movies = self.recommend(user)
             for movie, w in rec_movies:
