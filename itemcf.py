@@ -89,7 +89,7 @@ class ItemBasedCF():
                     if m1 == m2: continue
                     itemsim_mat.setdefault(m1,{})
                     itemsim_mat[m1].setdefault(m2,0)
-                    itemsim_mat[m1][m2] += 1
+                    itemsim_mat[m1][m2] += 1        #同时对两部电影评过分的人数
 
         print >> sys.stderr, 'build co-rated users matrix succ'
 
@@ -165,7 +165,7 @@ class ItemBasedCF():
 
 
 if __name__ == '__main__':
-    ratingfile = 'ml-1m/ratings.dat'
+    ratingfile = 'ratings.dat'
     itemcf = ItemBasedCF()
     itemcf.generate_dataset(ratingfile)
     itemcf.calc_movie_sim()
